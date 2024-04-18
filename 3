@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <string.h>
+
+// تعریف یک آرایه از نام‌های کاربران
+char users[10][20] = {"Ali", "Reza", "Sara", "Maryam", "Mohammad", "Zahra", "Hossein", "Narges", "Amir", "Fatemeh"};
+
+// تابعی برای بررسی اینکه آیا یک نام در آرایه وجود دارد یا خیر
+int is_user(char name[20]) {
+  for (int i = 0; i < 10; i++) {
+    if (strcmp(users[i], name) == 0) {
+      return 1; // نام در آرایه پیدا شد
+    }
+  }
+  return 0; // نام در آرایه پیدا نشد
+}
+
+// تابعی برای اضافه کردن یک نام جدید به آرایه
+void add_user(char name[20]) {
+  for (int i = 0; i < 10; i++) {
+    if (strlen(users[i]) == 0) {
+      strcpy(users[i], name); // نام را در جای خالی آرایه کپی می‌کنیم
+      break;
+    }
+  }
+}
+
+int main() {
+  char name[20]; // متغیری برای ذخیره نام کاربر
+  printf("لطفا نام خود را وارد کنید:\n");
+  scanf("%s", name); // خواندن نام از کنسول
+  if (is_user(name)) { // بررسی اینکه نام در آرایه وجود دارد یا خیر
+    printf("با موفقیت وارد شدید.\n");
+  } else {
+    add_user(name); // اضافه کردن نام به آرایه
+    printf("کاربر جدید خوش آمدید. نام شما %s است.\n", name);
+  }
+  return 0;
+}
