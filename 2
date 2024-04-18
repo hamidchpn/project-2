@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    // Declare a string variable and assign it the value "1234,122342,yuer"
+    char str[] = "1234,122342,yuer";
+    
+    // Declare an integer variable to store the index of the current character
+    int index = 0;
+    
+    // Declare a character variable to store the delimiter
+    char delimiter = ',';
+    
+    // Declare a pointer to a character and use strtok function to split the string by the delimiter
+    char *token = strtok(str, &delimiter);
+    
+    // Loop through the tokens until NULL is reached
+    while (token != NULL)
+    {
+        // Print the index and the length of the token using strlen function
+        printf("index %d: %d len\n", index, strlen(token));
+        
+        // Increment the index by 1
+        index++;
+        
+        // Get the next token by calling strtok again with NULL as the first argument
+        token = strtok(NULL, &delimiter);
+    }
+    
+    // Return 0 to indicate successful execution
+    return 0;
+}
